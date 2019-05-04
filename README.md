@@ -12,11 +12,11 @@ After you get into web-interface of the Jenkins you will see the one **seed** jo
 
 Pipeline job description. Our pipeline consist from 5 stages:
 
-1. GIT CLONE PROJECT. Cloning the repository into our work directory.  
-2. ANALYZING PROJECT. Analyzing our code with cppcheck utility and saving results to report.xml file.  
-3. SENDING REPORT TO SONAR. Sending our report.xml file to Sonar server.  
-4. COMPILATION BUILD. Compiling our code into app.  
-5. PUBLISHING ARTIFACT TO REPOSITORY. Publishing our artifact into Nexus repository.  
+**1. Git clone project.** Cloning the repository into our work directory.  
+**2. Analyzing project.** Analyzing our code with cppcheck utility and saving results to report.xml file.  
+**3. Sending report to Sonar**. Sending our report.xml file to Sonar server.  
+**4. Compilation build.** Compiling our code into app.  
+**5. Publishing artifact to repository".** Publishing our artifact into Nexus repository.  
 
 
 
