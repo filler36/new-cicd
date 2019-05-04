@@ -1,0 +1,15 @@
+version: '3'
+services:
+  jenkins:
+    image: "filler36/jenkins:3"
+    ports:
+      - "80:8080"
+      - "50000:50000"
+  sonar:
+    image: "filler36/sonar:2"
+    ports:
+      - "9000:9000"
+  nexus:
+    image: "sonatype/nexus3"
+    ports:
+      - "8081:8081"
