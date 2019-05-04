@@ -1,7 +1,7 @@
-###### Prerequisites
-There is few problems with our project that I don't resolve yet. It will be great if the IP address of host machine with Docker installed will be 192.168.56.100. Otherwise you should change that IP to actual. You can find this option there **Manage Jenkins -> Cloud -> Docker -> Docker cloud details -> Docker Host URI**.
+## Prerequisites
+There is few problems with my project that I don't resolve yet. It will be great if the IP address of host machine with Docker installed will be 192.168.56.100. Otherwise you should change that IP to actual in Jenkins configuration. You can find this option there: **Manage Jenkins -> Cloud -> Docker -> Docker cloud details -> Docker Host URI**.
 Additionally our project require to Enable Docker Remote API. You can check it with command netstat -tulnp. If There
-is dockerd listening port 4243. In other way you have to Enable Docker Remote API. You can find instructions here: https://scriptcrunch.com/enable-docker-remote-api/
+is dockerd listening port 4243. If not, you have to Enable Docker Remote API. You can find instructions here: https://scriptcrunch.com/enable-docker-remote-api/. Also there is a problem with publishing artifact to nexus that i don't resolve yet.
 
 ## Project description
 To launch our infrastructure just clone this repo and do **docker-compose up** command. You can see our infrastructure by command **docker ps -a**. You will see three containers: Jenkins, Sonar and Nexus and their ports exposed. To get into web-interface of these servers just copy the links below to your web browser:
