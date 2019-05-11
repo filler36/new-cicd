@@ -7,7 +7,7 @@ is dockerd listening port 4243. If not, you have to Enable Docker Remote API. Yo
 To launch our infrastructure just clone this repo and do **docker-compose up** command. You can see our infrastructure by command **docker ps -a**. You will see three containers: Jenkins, Sonar and Nexus and their ports exposed. To get into web-interface of these servers just copy the links below to your web browser:
 
 **Jenkins** 		http://localhost	(user: admin, password: admin)  
-**Nexus**		htpp://localhost:8081	(user: admin, password: admin123)  
+**Nexus**		http://localhost:8081	(user: admin, password: admin123)  
 **Sonar** 		http://localhost:9000	(user: admin, password: admin)
 
 After you get into web-interface of the Jenkins you will see the one **seed** job. To proceed just execute this seed job. When job will finished you will see one new **pipeline** job. This Job will starts automatically for the first time. Pipeline job will run on the docker agent. After job is will finished the docker agent will be automatically stoped and removed.
