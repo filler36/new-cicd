@@ -9,7 +9,7 @@ services:
     image: "filler36/sonar:2"
     ports:
       - "9000:9000"
-  nexus:
-    image: "sonatype/nexus3"
+  artifactory:
+    image: "docker.bintray.io/jfrog/artifactory-oss:latest"
     ports:
       - "8081:8081"
