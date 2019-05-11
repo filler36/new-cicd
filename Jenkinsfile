@@ -1,4 +1,4 @@
-script("""pipeline {
+pipeline {
 	agent { label 'slave1' }
 	triggers {
     	cron('*/20 * * * *')
@@ -32,6 +32,3 @@ script("""pipeline {
 		}
 	}
 }
-
-
-            """.stripIndent())
