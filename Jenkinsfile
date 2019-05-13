@@ -1,7 +1,7 @@
 pipeline {
     agent { label 'slave1' }
     triggers {
-    	cron('*/20 * * * *')
+    	cron('H/20 * * * *')
     }
     stages {
 
@@ -19,7 +19,7 @@ pipeline {
 
 	stage("3. SENDING REPORT TO SONAR") {
 	    steps {
-              	sh '/opt/sonar/bin/sonar-scanner -X -Dsonar.projectKey=ci-mvp -Dsonar.sources=./interview -Dsonar.host.url=http://192.168.56.100:9000 -Dsonar.login=admin -Dsonar.password=admin -Dsonar.language=c++ -Dsonar.cxx.cppcheck.reportPath=report.xml'
+              	sh '/opt/sonar/bin/sonar-scanner -X -Dsonar.projectKey=ci-mvp -Dsonar.sources=./interview -Dsonar.host.url=http://dockerhost:9000 -Dsonar.login=admin -Dsonar.password=admin -Dsonar.language=c++ -Dsonar.cxx.cppcheck.reportPath=report.xml'
 	    }
 	}
 
@@ -32,7 +32,7 @@ pipeline {
 
 	stage("5. PUBLISHING ARTIFACT TO REPOSITORY") {
 	    steps {
-	        sh 'curl -uadmin:password -T app "http://192.168.56.100:8081/artifactory/example-repo-local/app${BUILD_NUMBER}"'
+	        sh 'curl -uadmin:password -T app "http://dockerhost:8081/artifactory/example-repo-local/app${BUILD_NUMBER}"'
     	    }
 	}
     }
