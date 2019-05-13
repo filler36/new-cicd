@@ -20,7 +20,7 @@ pipeline {
 	stage("3. SENDING REPORT TO SONAR") {
 	    steps {
 		sh '''export DOCKER_HOST_IP=$(route -n | awk '/UG[ \t]/{print $2}')'''
-              	sh '''/opt/sonar/bin/sonar-scanner -X -Dsonar.projectKey=ci-mvp -Dsonar.sources=./interview -Dsonar.host.url=http://$DOCKER_HOST_IP:9000 -Dsonar.login=admin -Dsonar.password=admin -Dsonar.language=c++ -Dsonar.cxx.cppcheck.reportPath=report.xml'''
+              	sh '''/opt/sonar/bin/sonar-scanner -X -Dsonar.projectKey=ci-mvp -Dsonar.sources=./interview -Dsonar.host.url=http://${env.DOCKER_HOST_IP}:9000 -Dsonar.login=admin -Dsonar.password=admin -Dsonar.language=c++ -Dsonar.cxx.cppcheck.reportPath=report.xml'''
 	    }
 	}
 
@@ -33,7 +33,7 @@ pipeline {
 
 	stage("5. PUBLISHING ARTIFACT TO REPOSITORY") {
 	    steps {
-	        sh 'curl -uadmin:password -T app "http://$DOCKER_HOST_IP:8081/artifactory/example-repo-local/app${BUILD_NUMBER}"'
+	        sh 'curl -uadmin:password -T app "http://${env.DOCKER_HOST_IP}:8081/artifactory/example-repo-local/app${BUILD_NUMBER}"'
     	    }
 	}
     }
