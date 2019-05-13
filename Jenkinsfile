@@ -19,9 +19,7 @@ pipeline {
 
 	stage("3. SENDING REPORT TO SONAR") {
 	    steps {
-		sh '''export DOCKERHOST=$(route -n | awk '/UG[ \t]/{print $2}')'''
-		sh '''route -n | awk '/UG[ \t]/{print $2}' >> /tmp/dockerip'''
-		sh '''cat /tmp/dockerip'''
+		sh '''export <<< DOCKERHOST=$(route -n | awk '/UG[ \t]/{print $2}')'''
 		sh '''echo $DOCKERHOST'''
               	sh '''/opt/sonar/bin/sonar-scanner -X -Dsonar.projectKey=ci-mvp -Dsonar.sources=./interview -Dsonar.host.url=http://${env.DOCKER_HOST_IP}:9000 -Dsonar.login=admin -Dsonar.password=admin -Dsonar.language=c++ -Dsonar.cxx.cppcheck.reportPath=report.xml'''
 	    }
