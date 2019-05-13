@@ -20,7 +20,7 @@ pipeline {
 	stage("3. SENDING REPORT TO SONAR") {
 	    steps {
 		sh '''export DOCKER_HOST_IP=$(route -n | awk '/UG[ \t]/{print $2}')'''
-              	sh '/opt/sonar/bin/sonar-scanner -X -Dsonar.projectKey=ci-mvp -Dsonar.sources=./interview -Dsonar.host.url=http://$DOCKER_HOST_IP:9000 -Dsonar.login=admin -Dsonar.password=admin -Dsonar.language=c++ -Dsonar.cxx.cppcheck.reportPath=report.xml'
+              	sh '''/opt/sonar/bin/sonar-scanner -X -Dsonar.projectKey=ci-mvp -Dsonar.sources=./interview -Dsonar.host.url=http://$DOCKER_HOST_IP:9000 -Dsonar.login=admin -Dsonar.password=admin -Dsonar.language=c++ -Dsonar.cxx.cppcheck.reportPath=report.xml'''
 	    }
 	}
 
