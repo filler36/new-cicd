@@ -1,13 +1,12 @@
 ## Prerequisites
-There is few problems with my project that I don't resolve yet. It will be great if the IP address of host machine with Docker installed will be 192.168.56.100. Otherwise you should change that IP to actual in Jenkins configuration. You can find this option there: **Manage Jenkins -> Cloud -> Docker -> Docker cloud details -> Docker Host URI**.
 Additionally our project require to Enable Docker Remote API. You can check it with command netstat -tulnp. If There
-is dockerd listening port 4243. If not, you have to Enable Docker Remote API. You can find instructions here: https://scriptcrunch.com/enable-docker-remote-api/. Also there is a problem with publishing artifact to nexus that i don't resolve yet.
+is dockerd listening port 4243. If not, you have to Enable Docker Remote API. You can find instructions here: https://scriptcrunch.com/enable-docker-remote-api/.
 
 ## Project description
-To launch our infrastructure just clone this repo and do **docker-compose up** command. You can see our infrastructure by command **docker ps -a**. You will see three containers: Jenkins, Sonar and Nexus and their ports exposed. To get into web-interface of these servers just copy the links below to your web browser:
+To launch our infrastructure just clone this repo and do **docker-compose up** command. You can see our infrastructure by command **docker ps -a**. You will see three containers: Jenkins, Sonar, Artifactory and their ports exposed. To get into web-interfaces of these servers just copy the links below to your web browser:
 
 **Jenkins** 		http://localhost	(user: admin, password: admin)  
-**Nexus**		http://localhost:8081	(user: admin, password: admin123)  
+**Artifactory**		http://localhost:8081	(user: admin, password: password)  
 **Sonar** 		http://localhost:9000	(user: admin, password: admin)
 
 After you get into web-interface of the Jenkins you will see the one **seed** job. To proceed just execute this seed job. When job will finished you will see one new **pipeline** job. This Job will starts automatically for the first time. Pipeline job will run on the docker agent. After job is will finished the docker agent will be automatically stoped and removed.
@@ -19,3 +18,7 @@ Our pipeline job consists from 5 stages:
 **4. Compilation build.** Compiling our code into app.  
 **5. Publishing artifact to repository".** Publishing our artifact into Nexus repository.  
 
+To create seed job in our Jenkins via REST API just execute the command below:
+**docker exec -dit ci-mvp_jenkins_fil_1 sh -c "cd /tmp/ && ./seed_job.sh"
+
+docker container run -d --net=mynetwork --name=jen19 -p 80:8080 -p 50000:50000 -v /root/exam/jenkins/data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock filler36/jenkins:4
