@@ -19,8 +19,6 @@ pipeline {
 
 	stage("3. SENDING REPORT TO SONAR") {
 	    steps {
-		sh '''route -n | awk '/UG[ \t]/{print $2}' >> /etc/hosts'''
-		sh '''sed '${s/$/ dockerhost/}' /etc/hosts'''
               	sh '''/opt/sonar/bin/sonar-scanner -X -Dsonar.projectKey=ci-mvp -Dsonar.sources=./interview -Dsonar.host.url=http://dockerhost:9000 -Dsonar.login=admin -Dsonar.password=admin -Dsonar.language=c++ -Dsonar.cxx.cppcheck.reportPath=report.xml'''
 	    }
 	}
