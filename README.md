@@ -18,4 +18,4 @@ Our pipeline job consists from 5 stages:
 **2. Analyzing project.** Analyzing our code with cppcheck utility and saving results to report.xml file.  
 **3. Sending report to Sonar**. Sending our report.xml file to Sonar server.  
 **4. Compilation build.** Compiling our code into app.  
-**5. Publishing artifact to repository".** Publishing our artifact into Nexus repository.  
+**5. Publishing artifact to repository".** Publishing our artifact into Artifactory.  
