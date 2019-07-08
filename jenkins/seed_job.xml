@@ -20,7 +20,7 @@
             	git {
                 	remote {
                     	name(&apos;master&apos;)
-                  		url(&apos;https://github.com/filler36/ci-mvp&apos;)
+                  		url(&apos;https://github.com/filler36/new-cicd&apos;)
             		}
                 	extensions {
                 		cloneOptions {
