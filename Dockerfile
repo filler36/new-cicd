@@ -10,5 +10,5 @@ RUN echo "export PATH=$PATH:/opt/sonar/bin" >> /home/jenkins/.profile
 RUN apt-get install -y --no-install-recommends sudo
 RUN apt-get install -y curl
 RUN echo "jenkins ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-COPY scr.sh /tmp/scr.sh
-ENTRYPOINT sudo chmod 777 /etc/hosts && sudo /tmp/scr.sh && /bin/bash
+COPY hostDiscover.sh /tmp/hostDiscover.sh
+ENTRYPOINT sudo chmod 777 /etc/hosts && sudo /tmp/hostDiscover.sh && /bin/bash
