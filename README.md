@@ -21,11 +21,11 @@ Our pipeline job consists from 5 stages:
 **5. Publishing artifact to repository".** Publishing our artifact into Artifactory.  
   
 [docker-compose.yml](docker-compose.yml) This is a docker-compose file that describes our CI infrastructure  
-**jenkins/csrfProtection.groovy** This script enables CSRF Protection and sets Default Crumb Issuer in Jenkins Configuration before starting Jenkins service (Jenkins > Configure Global Security > CSRF Protection). It is necessary in order to run seed_job.sh.  
-**jenkins/disableScriptApproval.groovy** This script disables required approvals for Job DSL scripts (Jenkins > Configure Global Security > CSRF Protection). It is necessary in order to run our Pipeline job without manual approving.  
-**jenkins/securityConfiguration.groovy"** This script enables security with Jenkins own user database. It is necessary in order to logging in.  
-**jenkins/Dockerfile** This Dockerfile describes our Jenkins image.  
-**jenkins/plugins.txt** This txt file contains list of required plugins with dependencies for Jenkins. The content of this file is transfered to default script in Jenkins container (/usr/local/bin/install-plugins.sh) in order to pre-install plugins with dependencies before starting Jenkins service. Here is an example to get the list of plugins from an existing server:
+[jenkins/csrfProtection.groovy](jenkins/csrfProtection.groovy) This script enables CSRF Protection and sets Default Crumb Issuer in Jenkins Configuration before starting Jenkins service (Jenkins > Configure Global Security > CSRF Protection). It is necessary in order to run seed_job.sh.  
+[jenkins/disableScriptApproval.groovy](jenkins/disableScriptApproval.groovy) This script disables required approvals for Job DSL scripts (Jenkins > Configure Global Security > CSRF Protection). It is necessary in order to run our Pipeline job without manual approving.  
+[jenkins/securityConfiguration.groovy](jenkins/securityConfiguration.groovy) This script enables security with Jenkins own user database. It is necessary in order to logging in.  
+[jenkins/Dockerfile](jenkins/Dockerfile) This Dockerfile describes our Jenkins image.  
+[jenkins/plugins.txt](jenkins/plugins.txt) This txt file contains list of required plugins with dependencies for Jenkins. The content of this file is transfered to default script in Jenkins container (/usr/local/bin/install-plugins.sh) in order to pre-install plugins with dependencies before starting Jenkins service. Here is an example to get the list of plugins from an existing server:
 
 ```
 JENKINS_HOST=username:password@myhost.com:port
