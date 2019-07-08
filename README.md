@@ -19,15 +19,21 @@ Our pipeline job consists from 5 stages:
 **3. Sending report to Sonar**. Sending our report.xml file to Sonar server.  
 **4. Compilation build.** Compiling our code into app.  
 **5. Publishing artifact to repository".** Publishing our artifact into Artifactory.  
-  
+
+## Files description
 [docker-compose.yml](docker-compose.yml) This is a docker-compose file that describes our CI infrastructure  
 [jenkins/csrfProtection.groovy](jenkins/csrfProtection.groovy) This script enables CSRF Protection and sets Default Crumb Issuer in Jenkins Configuration before starting Jenkins service (Jenkins > Configure Global Security > CSRF Protection). It is necessary in order to run seed_job.sh.  
 [jenkins/disableScriptApproval.groovy](jenkins/disableScriptApproval.groovy) This script disables required approvals for Job DSL scripts (Jenkins > Configure Global Security > CSRF Protection). It is necessary in order to run our Pipeline job without manual approving.  
 [jenkins/securityConfiguration.groovy](jenkins/securityConfiguration.groovy) This script enables security with Jenkins own user database. It is necessary in order to logging in.  
+[jenkins/dockerPlugin.groovy](jenkins/dockerPlugin.groovy) This script configures Docker plugin for our infrastructure.  
 [jenkins/Dockerfile](jenkins/Dockerfile) This Dockerfile describes our Jenkins image.  
 [jenkins/plugins.txt](jenkins/plugins.txt) This txt file contains list of required plugins with dependencies for Jenkins. The content of this file is transfered to default script in Jenkins container (/usr/local/bin/install-plugins.sh) in order to pre-install plugins with dependencies before starting Jenkins service. Here is an example to get the list of plugins from an existing server:
-
 ```
 JENKINS_HOST=username:password@myhost.com:port
 curl -sSL "http://$JENKINS_HOST/pluginManager/api/xml?depth=1&xpath=/*/*/shortName|/*/*/version&wrapper=plugins" | perl -pe 's/.*?<shortName>([\w-]+).*?<version>([^<]+)()(<\/\w+>)+/\1 \2\n/g'|sed 's/ /:/'
-```
+```  
+[jenkins/seed_job.sh](jenkins/seed_job.sh) This BASH script runs to create seed job via API call.  
+[jenkins/seed_job.xml](jenkins/seed_job.xml) This file describe seed job configuration and used by seed_job.sh script.  
+[docker_slave/Dockerfile](docker_slave/Dockerfile) This file describe image for Jenkins Docker slave. You can find this image here: https://cloud.docker.com/u/filler36/repository/docker/filler36/docker_slave
+[docker_slave/scr.sh](docker_slave/scr.sh) This BASH script dinamically discovers Host IP and add this IP with Hostname "dockerhost" to /etc/hosts after starting container.  
+[Jenkinsfile](Jenkinsfile)  Jenkinsfile with Declarative Pipeline
