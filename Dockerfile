@@ -1,4 +1,4 @@
-from ubuntu
+FROM ubuntu
 USER root
 RUN apt-get update && apt-get install -y net-tools git cppcheck g++ default-jre
 RUN useradd -m -p $(openssl passwd -1 jenkins) jenkins && mkdir -p /home/jenkins/.m2
