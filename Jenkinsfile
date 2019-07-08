@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'slave1' }
+    agent { dockerfile true }
     triggers {
     	cron('H/20 * * * *')
     }

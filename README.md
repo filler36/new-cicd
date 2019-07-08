@@ -34,6 +34,6 @@ curl -sSL "http://$JENKINS_HOST/pluginManager/api/xml?depth=1&xpath=/*/*/shortNa
 ```  
 [jenkins/seed_job.sh](jenkins/seed_job.sh) This BASH script runs to create seed job via API call.  
 [jenkins/seed_job.xml](jenkins/seed_job.xml) This file describe seed job configuration and used by seed_job.sh script.  
-[docker_slave/Dockerfile](docker_slave/Dockerfile) This file describe image for Jenkins Docker slave. You can find this image here: https://cloud.docker.com/u/filler36/repository/docker/filler36/docker_slave
+[docker_slave/Dockerfile](docker_slave/Dockerfile) This file describe image for Jenkins Docker slave. You can find this image here: https://cloud.docker.com/u/filler36/repository/docker/filler36/docker_slave  
 [docker_slave/scr.sh](docker_slave/scr.sh) This BASH script dinamically discovers Host IP and add this IP with Hostname "dockerhost" to /etc/hosts after starting container.  
 [Jenkinsfile](Jenkinsfile)  Jenkinsfile with Declarative Pipeline
