@@ -20,7 +20,7 @@ Our pipeline job consists from 5 stages:
 **4. Compilation build.** Compiling our code into app.  
 **5. Publishing artifact to repository".** Publishing our artifact into Artifactory.  
   
-**docker-compose.yml** This is a docker-compose file that describes our CI infrastructure  
+[docker-compose.yml](docker-compose.yml) This is a docker-compose file that describes our CI infrastructure  
 **jenkins/csrfProtection.groovy** This script enables CSRF Protection and sets Default Crumb Issuer in Jenkins Configuration before starting Jenkins service (Jenkins > Configure Global Security > CSRF Protection). It is necessary in order to run seed_job.sh.  
 **jenkins/disableScriptApproval.groovy** This script disables required approvals for Job DSL scripts (Jenkins > Configure Global Security > CSRF Protection). It is necessary in order to run our Pipeline job without manual approving.  
 **jenkins/securityConfiguration.groovy"** This script enables security with Jenkins own user database. It is necessary in order to logging in.  
